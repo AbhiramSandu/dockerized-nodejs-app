@@ -58,5 +58,11 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
+    stage('Docker Purge') {
+      steps {
+        sh 'docker image prune -fa'
+        deleteDir()
+      }
+    }
   }
 }
